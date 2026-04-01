@@ -23,9 +23,6 @@ kD = 0.03;
 
 kPID0 = [kP,kI,kD];
 
-
-
-
 % Bounds (optional)
 lb = [0, 0, 0];
 ub = [1, 1, 1];
@@ -50,8 +47,6 @@ disp(kPID_opt);
 
 %optimal PID controllers (the results of optimization problem from paper)
 C1 = 0.46+0.12/s+0.04*s/(0.1*s+1);
-
-
 
 w = logspace(-2, 2, 2000);   % only positive frequencies
 
@@ -80,11 +75,7 @@ C = buildController(kPID_opt); % optimized values
 np = nyquistplot(C*G11,w);
 np.ShowNegativeFrequencies = "off";
 
-
-
 %% Function Definitions
-
-
 
 function J = objectiveIAE(kPID, P)
     C = buildController(kPID);
